@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="h-full">
+	<h1>Hello From Home Page</h1>
+	<h2 th:text="${message}"></h2>
+	<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-gray-100">
+  <body class="h-full">
+  ```
+-->
+	<div class="min-h-full">
+		<nav class="bg-gray-800">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="flex h-16 items-center justify-between">
+					<div class="flex items-center">
+						<div class="shrink-0">
+							<img class="size-8"
+								src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+								alt="Your Company">
+						</div>
+						<div class="hidden md:block">
+							<div class="ml-10 flex items-baseline space-x-4">
+								<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+								<a th:href="@{/}"
+									class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+									aria-current="page">Dashboard</a> <a href="#"
+									class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
+								<a href="#"
+									class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+								<a href="#"
+									class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+								<a href="#"
+									class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</nav>
+
+		<header class="bg-white shadow-sm">
+			<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+				<h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+			</div>
+		</header>
+		<main>
+			<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+				<a th:href="@{'/create'}" class="bg-blue-600 font-medium px-3 py-2 rounded-md text-sm text-white inline-block mb-5 hover:bg-blue-700">Add</a>
+				<table class="table-auto w-full">
+					<thead class="bg-gray-800 text-white uppercase">
+						<tr>
+							<th class="px-6 oy-3 text-center">First Name</th>
+							<th class="px-6 oy-3 text-center">Last Name</th>
+							<th class="px-6 oy-3 text-center">Email</th>
+							<th class="px-6 oy-3 text-center">Phone</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bg-white border-b" th:each="customer:${customerList}">
+							<td class="px-6 py-5 text-center" th:text="${customer.firstName}"></td>
+							<td class="px-6 py-5 text-center" th:text="${customer.LastName}"></td>
+							<td class="px-6 py-5 text-center" th:text="${customer.Email}"></td>
+							<td  class="px-6 py-5 text-center" th:text="${customer.Phone}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Your content -->
+			</div>
+		</main>
+	</div>
+
+
+</body>
+</html>
