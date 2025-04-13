@@ -51,47 +51,33 @@
 
 		<header class="bg-white shadow-sm">
 			<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-				<h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+				<h1 class="text-3xl font-bold tracking-tight text-gray-900" th:text="${customer.firstName+ ''+customer.lastName}"></h1>
 			</div>
 		</header>
 		<main>
 			<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-				<div th:if="${message}" class="bg-green-200 border border-green-400 border-solid mb-5 rounded-md text-green-900">
-					<p th:text="${message}"></p>
-				</div>
-				<a th:href="@{'/create'}" class="bg-blue-600 font-medium px-3 py-2 rounded-md text-sm text-white inline-block mb-5 hover:bg-blue-700">Add New Customer</a>
 				<table class="table-auto w-full">
-					<thead class="bg-gray-800 text-white uppercase">
-						<tr>
-							<th class="px-6 oy-3 text-center">First Name</th>
-							<th class="px-6 oy-3 text-center">Last Name</th>
-							<th class="px-6 oy-3 text-center">Email</th>
-							<th class="px-6 oy-3 text-center">Phone</th>
-							<th class="px-6 oy-3 text-center">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="bg-white border-b" th:each="customer:${customerList}">
-							<td class="px-6 py-5 text-center" th:text="${customer.firstName}"></td>
-							<td class="px-6 py-5 text-center" th:text="${customer.LastName}"></td>
-							<td class="px-6 py-5 text-center" th:text="${customer.Email}"></td>
-							<td  class="px-6 py-5 text-center" th:text="${customer.Phone}"></td>
-							<td class="px-6 py-5 text-center">
-								<a th:href="@{/customer/{id}(id=${customer.id})}" class="bg-green-600 font-medium hover:bg-green-700 px-3 py-3 rounded-md text-sm text-white mr-1">
-									Show
-								</a>
-								
-								<a th:href="@{/customer/{id}/edit(id=${customer.id})}" class="bg-blue-600 font-medium hover:bg-blue-700 px-3 py-3 rounded-md text-sm text-white mr-1">
-									Edit
-								</a>
-								<a th:href="@{/customer/{id}/delete(id=${customer.id})}" class="bg-blue-600 font-medium hover:bg-blue-700 px-3 py-3 rounded-md text-sm text-white mr-1">
-									Delete
-								</a>
-							</td>
-						</tr>
-					</tbody>
+					<tr>
+						<td class="uppercase border text-left px-6 bg-gray-800 text-white">ID</td>
+						<td class="px-6 py-4 border" th:text="${customer.id}"></td>
+					</tr>
+					<tr>	
+						<td class="uppercase border text-left px-6 bg-gray-800 text-white">First Name</td>
+						<td class="px-6 py-4 border bg-white" th:text="${customer.firstName}"></td>
+					</tr>
+					<tr>	
+						<td class="uppercase border text-left px-6 bg-gray-800 text-white">Last Name</td>
+						<td class="px-6 py-4 border bg-white" th:text="${customer.lastName}"></td>
+					</tr>
+					<tr>
+						<td class="uppercase border text-left px-6 bg-gray-800 text-white">Email</td>
+						<td class="px-6 py-4 border bg-white" bg-white th:text="${customer.email}"></td>
+					</tr>
+					<tr>
+						<td class="uppercase border text-left px-6 bg-gray-800 text-white">Phone</td>
+						<td class="px-6 py-4 border bg-white" th:text="${customer.phone}"></td>
+					</tr>
 				</table>
-				<!-- Your content -->
 			</div>
 		</main>
 	</div>
